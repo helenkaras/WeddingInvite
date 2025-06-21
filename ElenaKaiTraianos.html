@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Είστε προσκεκλημένοι!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('wedding_background.jpg'); 
+            /* background-size: cover; */
+            background-position:center;
+            background-attachment: scroll;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(244, 228, 214, 0.3);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out;
+            width: 100%;
+        }
+        
+        .date-display {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .date-number {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #4f46e5;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            white-space: nowrap;
+
+        }
+        
+        .title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #6b7280;
+            font-weight: 300;
+            text-align: center;
+        }
+        
+        .panels {
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+            margin-bottom: 40px;
+            width: 100%;
+            align-items: center;
+        }
+        
+        .panel {
+            background: rgba(255, 239, 213, 0.796);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 
+                0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                0 10px 10px -5px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.1),
+                0 15px 20px -5px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 239, 213, 0.7);
+        }
+        
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        
+        .panel-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .panel-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            text-align: center;
+        }
+        
+        .text-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #374151;
+            text-align: center;
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #e5e7eb;
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-size: 1.1rem;
+            margin: 20px 0;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+        
+        .rsvp-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+        }
+        
+        .rsvp-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        }
+        
+        .rsvp-panel {
+            min-height: 700px;
+        }
+        
+        .form-container {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .rsvp-form {
+            border-radius: 12px;
+            background: white;
+        }
+        
+        .footer {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-top: 40px;
+            width: 100%;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+                padding: 15px;
+            }
+            
+            .date-number {
+                font-size: 2.2rem;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .panel {
+                padding: 20px;
+            }
+            
+            .map-container {
+                height: 250px;
+            }
+            
+            .panel-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        
+        /* Instructions for replacing background */
+        .bg-instructions {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(79, 70, 229, 0.9);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            max-width: 300px;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .bg-instructions h4 {
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .bg-instructions p {
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-display">
+                <div class="date-number">Έλενα & Τραϊανός</div>
+            </div>
+            <h1 class="title">Είστε προσκεκλημένοι!</h1>
+            <p class="subtitle">Με μεγάλη χαρά, σας προσκαλούμε να γιορτάσετε μαζί μας!</p>
+        </header>
+        
+        <div class="panels">
+            <!-- Party Details Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">Λεπτομέρειες Εκδήλωσης</h2>
+                </div>
+                <div class="text-content">
+                    <p><strong>Ημερομηνία:</strong> Σάββατο, 27 Σεπτεμβρίου 2025</p>
+                    <p><strong>Ώρα:</strong> 19:30</p>
+                    <br>
+                    <p>Παντρευτήκαμε!!!
+Και θέλουμε να το γιορτάσουμε με όλα τα αγαπημένα μας πρόσωπα, σαν μία μεγάλη παρέα.
+Να αποχαιρετήσουμε το καλοκαίρι με ένα πάρτι στην Αφήσσο Πηλίου, σε ένα μέρος όπου έχουμε περάσει αξέχαστες στιγμές, με καλή παρέα, φαγητό και θέα το ηλιοβασίλεμα και τη θάλασσα.
+
+Σε περιμένουμε στο πάρτι
+που θα γίνει 
+στον κήπο του ξενοδοχείου Καλιφτέρι, πάνω από το beach bar Μάγιο.
+
+Θα έχει γεύμα, πολύ αλκοόλ
+και… τακούνια δεν ενδείκνυνται! </p>
+                </div>
+            </div>
+            
+            <!-- Location Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">Τοποθεσία</h2>
+                </div>
+                <div class="text-content">
+                    <p><strong>Ξενοδοχείο Καλιφτέρη</strong></p>
+                    <p>Καλιφτέρη, Άφησσος, Πήλιο, 370 10</p>
+                    <br>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d771.1859627958086!2d23.158707502282944!3d39.275735916182015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a717e0f548a41b%3A0x21b4a3a417a54213!2zzqDOsc-BzrHOu86vzrEgzprOsc67zrvOuc-Gz4TOrc-Bzrc!5e1!3m2!1sen!2sgr!4v1750516820406!5m2!1sen!2sgr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <br>
+                    <p><em><a href="https://maps.app.goo.gl/ZZngh3McHLe2PwRp9" target="_blank" style="color: #4f46e5; text-decoration: none;">Οδηγίες στο Google Maps</a></em></p>
+                </div>
+            </div>
+            
+            <!-- RSVP Panel -->
+            <div class="panel rsvp-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">Επιβεβαίωση Παρουσίας</h2>
+                </div>
+                <div class="text-content">
+                    <p>Παρακαλούμε ενημερώστε μας αν μπορείτε να έρθετε!</p>
+                    <br>
+                    <p><strong>Επιβεβαίωση έως:</strong> 1η Σεπτέμβρη</p>
+                    <br>
+                    <div class="form-container">
+                        <iframe 
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSfOzvn1QKgYBqGSMuvzGkUMlR5EVWL5g3pZ-mC-koTMTwn2Qw/viewform?usp=sharing&ouid=106889908821891604879" 
+                            width="100%" 
+                            height="600" 
+                            frameborder="0" 
+                            marginheight="0" 
+                            marginwidth="0"
+                            class="rsvp-form">
+                            Φόρτωση φόρμας επιβεβαίωσης...
+                        </iframe>
+                    </div>
+                    <p><em>Πρόβλημα με τη φόρμα; <a href="https://docs.google.com/forms/d/e/1FAIpQLSfOzvn1QKgYBqGSMuvzGkUMlR5EVWL5g3pZ-mC-koTMTwn2Qw/viewform?usp=dialog" target="_blank" style="color: #4f46e5; text-decoration: none;">Ανοίξτε σε νέα καρτέλα →</a></em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
