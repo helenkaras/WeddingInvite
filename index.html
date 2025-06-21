@@ -19,12 +19,10 @@
             font-family: 'Roboto', sans-serif;
             background-image: url('wedding_background.jpg'); 
             background-size: cover;
-            background-position: center center;
-            background-attachment: fixed;
+            background-position: center;
+            background-attachment: scroll;
             background-repeat: no-repeat;
             min-height: 100vh;
-            min-height: 100dvh; /* Dynamic viewport height for mobile */
-            width: 100%;
             padding: 10px;
             position: relative;
             overflow-x: hidden;
@@ -269,15 +267,7 @@
             body {
                 padding: 8px;
                 background-attachment: scroll;
-                background-attachment: scroll;
-                background-size: cover;
-                background-position: center center;
-                min-height: 100vh;
-                min-height: 100dvh;
-            }
-            
-            html {
-                height: 100%;
+                 background-size: 100% auto;
             }
             
             .container {
@@ -333,15 +323,6 @@
         @media (max-width: 480px) {
             body {
                 padding: 5px;
-                background-size: cover;
-                background-attachment: scroll;
-                background-position: center center;
-                background-attachment: scroll;
-            }
-            
-            html {
-                height: 100%;
-                overflow-x: hidden;
             }
             
             .panel {
@@ -364,13 +345,6 @@
         
         /* Landscape phone orientation */
         @media (max-width: 768px) and (orientation: landscape) {
-            body {
-                background-size: cover;
-                background-attachment: scroll;
-                background-position: center center;
-                background-attachment: scroll;
-            }
-            
             .map-container {
                 height: 150px;
             }
