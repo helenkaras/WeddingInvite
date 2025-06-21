@@ -107,27 +107,29 @@
         }
         
         .panel {
-            background: rgba(255, 239, 213, 0.9);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 
-                0 10px 25px -5px rgba(0, 0, 0, 0.1),
-                0 5px 10px -5px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease-out;
-            width: 100%;
-            max-width: 500px;
-            margin: 0 5px;
-        }
-        
-        .panel:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 15px 35px -12px rgba(0, 0, 0, 0.15),
-                0 10px 15px -5px rgba(0, 0, 0, 0.08);
-            background: rgba(255, 239, 213, 0.95);
-        }
+    /* Change the last value from 0.9 to 0.8 to increase transparency */
+    background: rgba(255, 239, 213, 0.4);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 
+        0 10px 25px -5px rgba(0, 0, 0, 0.1),
+        0 5px 10px -5px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease-out;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 5px;
+}
+
+.panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 15px 35px -12px rgba(0, 0, 0, 0.15),
+        0 10px 15px -5px rgba(0, 0, 0, 0.08);
+    /* Also adjust the hover effect. Let's make it 0.9 */
+    background: rgba(255, 239, 213, 0.9);
+}
         
         .panel-header {
             display: flex;
@@ -262,14 +264,12 @@
             }
         }
         
-        /* Mobile-specific optimizations */
-        @media (max-width: 768px) {
+           @media (max-width: 768px) {
             body {
-                padding: 8px;
-                background-attachment: scroll;
-                 background-size: 100% auto;
+                /* Make sure 'background-mobile.jpg' is in the same folder as your HTML file. */
+                background-image: url('background-mobile.jpg');
             }
-            
+
             .container {
                 padding: 0;
             }
@@ -319,39 +319,19 @@
             }
         }
         
-        /* Very small screens */
+        /* --- Other media queries from your original code --- */
+        
         @media (max-width: 480px) {
-            body {
-                padding: 5px;
-            }
-            
-            .panel {
-                padding: 15px;
-                margin: 0 1px;
-            }
-            
-            .date-number {
-                padding: 0 5px;
-            }
-            
-            .map-container {
-                height: 180px;
-            }
-            
-            .rsvp-form {
-                min-height: 450px;
-            }
+            body { padding: 5px; }
+            .panel { padding: 15px; margin: 0 1px; }
+            .date-number { padding: 0 5px; }
+            .map-container { height: 180px; }
+            .rsvp-form { min-height: 450px; }
         }
         
-        /* Landscape phone orientation */
         @media (max-width: 768px) and (orientation: landscape) {
-            .map-container {
-                height: 150px;
-            }
-            
-            .rsvp-form {
-                min-height: 400px;
-            }
+            .map-container { height: 150px; }
+            .rsvp-form { min-height: 400px; }
         }
     </style>
 </head>
