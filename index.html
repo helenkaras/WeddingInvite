@@ -19,16 +19,17 @@
             font-family: 'Roboto', sans-serif;
             background-image: url('wedding_background.jpg'); 
             background-size: cover;
-            background-position:center;
+            background-position: center;
             background-attachment: scroll;
             background-repeat: no-repeat;
             min-height: 100vh;
-            padding: 20px;
+            padding: 10px;
             position: relative;
             overflow-x: hidden;
             display: flex;
             justify-content: center;
             align-items: flex-start;
+            line-height: 1.6;
         }
         
         body::before {
@@ -38,7 +39,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(244, 228, 214, 0.3);
+            background: rgba(244, 228, 214, 0.2);
             z-index: 0;
             pointer-events: none;
         }
@@ -56,30 +57,31 @@
         
         .header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             animation: fadeInUp 1s ease-out;
             width: 100%;
+            padding: 20px 10px;
         }
         
         .date-display {
             display: flex;
             justify-content: center;
-            gap: 20px;
             margin-bottom: 20px;
+            padding: 0 10px;
         }
         
         .date-number {
-            font-size: 3.5rem;
+            font-size: clamp(1.8rem, 6vw, 3.5rem);
             font-weight: 600;
             color: #4f46e5;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
             text-align: center;
-            white-space: nowrap;
-
+            word-break: break-word;
+            hyphens: auto;
         }
         
         .title {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             font-weight: 600;
             color: #1f2937;
             margin-bottom: 10px;
@@ -88,41 +90,43 @@
         }
         
         .subtitle {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             color: #6b7280;
             font-weight: 300;
             text-align: center;
+            padding: 0 10px;
         }
         
         .panels {
             display: flex;
             flex-direction: column;
-            gap: 100px;
-            margin-bottom: 40px;
+            gap: 30px;
+            margin-bottom: 30px;
             width: 100%;
             align-items: center;
         }
         
         .panel {
-            background: rgba(255, 239, 213, 0.796);
+            background: rgba(255, 239, 213, 0.9);
             border-radius: 20px;
-            padding: 30px;
+            padding: 20px;
             box-shadow: 
-                0 20px 25px -5px rgba(0, 0, 0, 0.1),
-                0 10px 10px -5px rgba(0, 0, 0, 0.05);
+                0 10px 25px -5px rgba(0, 0, 0, 0.1),
+                0 5px 10px -5px rgba(0, 0, 0, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
             animation: fadeInUp 1s ease-out;
             width: 100%;
             max-width: 500px;
+            margin: 0 5px;
         }
         
         .panel:hover {
             transform: translateY(-5px);
             box-shadow: 
-                0 25px 50px -12px rgba(0, 0, 0, 0.1),
-                0 15px 20px -5px rgba(0, 0, 0, 0.05);
-            background: rgba(255, 239, 213, 0.7);
+                0 15px 35px -12px rgba(0, 0, 0, 0.15),
+                0 10px 15px -5px rgba(0, 0, 0, 0.08);
+            background: rgba(255, 239, 213, 0.95);
         }
         
         .panel-header {
@@ -131,6 +135,7 @@
             gap: 15px;
             margin-bottom: 20px;
             justify-content: center;
+            flex-wrap: wrap;
         }
         
         .panel-icon {
@@ -143,25 +148,35 @@
             justify-content: center;
             color: white;
             font-size: 1.2rem;
+            flex-shrink: 0;
         }
         
         .panel-title {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
             font-weight: 600;
             color: #1f2937;
             text-align: center;
         }
         
         .text-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            line-height: 1.7;
             color: #374151;
-            text-align: center;
+            text-align: left;
+            word-wrap: break-word;
+        }
+        
+        .text-content p {
+            margin-bottom: 12px;
+        }
+        
+        .text-content strong {
+            color: #1f2937;
         }
         
         .map-container {
             width: 100%;
-            height: 300px;
+            height: 250px;
             border-radius: 12px;
             overflow: hidden;
             border: 2px solid #e5e7eb;
@@ -170,27 +185,28 @@
             align-items: center;
             justify-content: center;
             color: #6b7280;
-            font-size: 1.1rem;
-            margin: 20px 0;
+            font-size: 1rem;
+            margin: 15px 0;
         }
         
         .map-container iframe {
             width: 100%;
             height: 100%;
-            border-radius: 12px;
+            border-radius: 10px;
         }
         
         .rsvp-button {
             display: inline-block;
             background: linear-gradient(135deg, #4f46e5, #7c3aed);
             color: white;
-            padding: 15px 30px;
+            padding: 12px 24px;
             border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+            text-align: center;
         }
         
         .rsvp-button:hover {
@@ -200,14 +216,14 @@
         }
         
         .rsvp-panel {
-            min-height: 700px;
+            min-height: auto;
         }
         
         .form-container {
             width: 100%;
             border-radius: 12px;
             overflow: hidden;
-            margin: 20px 0;
+            margin: 15px 0;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         
@@ -219,9 +235,20 @@
         .footer {
             text-align: center;
             color: #6b7280;
-            font-size: 0.9rem;
-            margin-top: 40px;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            margin-top: 30px;
             width: 100%;
+            padding: 0 10px;
+        }
+        
+        .link-style {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .link-style:hover {
+            text-decoration: underline;
         }
         
         @keyframes fadeInUp {
@@ -235,57 +262,95 @@
             }
         }
         
+        /* Mobile-specific optimizations */
         @media (max-width: 768px) {
             body {
+                padding: 8px;
                 background-attachment: scroll;
-                padding: 15px;
             }
             
-            .date-number {
-                font-size: 2.2rem;
+            .container {
+                padding: 0;
             }
             
-            .title {
-                font-size: 2rem;
+            .header {
+                margin-bottom: 20px;
+                padding: 15px 5px;
+            }
+            
+            .panels {
+                gap: 20px;
+                margin-bottom: 20px;
             }
             
             .panel {
-                padding: 20px;
-            }
-            
-            .map-container {
-                height: 250px;
+                padding: 18px;
+                margin: 0 2px;
+                border-radius: 15px;
             }
             
             .panel-header {
-                flex-direction: column;
                 gap: 10px;
+                margin-bottom: 15px;
+            }
+            
+            .panel-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1.1rem;
+            }
+            
+            .text-content {
+                text-align: left;
+            }
+            
+            .map-container {
+                height: 200px;
+                margin: 10px 0;
+            }
+            
+            .form-container {
+                margin: 10px 0;
+            }
+            
+            .rsvp-form {
+                min-height: 500px;
             }
         }
         
-        /* Instructions for replacing background */
-        .bg-instructions {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(79, 70, 229, 0.9);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            max-width: 300px;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        /* Very small screens */
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            
+            .panel {
+                padding: 15px;
+                margin: 0 1px;
+            }
+            
+            .date-number {
+                padding: 0 5px;
+            }
+            
+            .map-container {
+                height: 180px;
+            }
+            
+            .rsvp-form {
+                min-height: 450px;
+            }
         }
         
-        .bg-instructions h4 {
-            margin-bottom: 8px;
-            font-size: 1rem;
-        }
-        
-        .bg-instructions p {
-            margin-bottom: 5px;
-            line-height: 1.4;
+        /* Landscape phone orientation */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .map-container {
+                height: 150px;
+            }
+            
+            .rsvp-form {
+                min-height: 400px;
+            }
         }
     </style>
 </head>
@@ -309,16 +374,11 @@
                     <p><strong>Ημερομηνία:</strong> Σάββατο, 27 Σεπτεμβρίου 2025</p>
                     <p><strong>Ώρα:</strong> 19:30</p>
                     <br>
-                    <p>Παντρευτήκαμε!!!
-Και θέλουμε να το γιορτάσουμε με όλα τα αγαπημένα μας πρόσωπα, σαν μία μεγάλη παρέα.
-Να αποχαιρετήσουμε το καλοκαίρι με ένα πάρτι στην Αφήσσο Πηλίου, σε ένα μέρος όπου έχουμε περάσει αξέχαστες στιγμές, με καλή παρέα, φαγητό και θέα το ηλιοβασίλεμα και τη θάλασσα.
-
-Σε περιμένουμε στο πάρτι
-που θα γίνει 
-στον κήπο του ξενοδοχείου Καλιφτέρι, πάνω από το beach bar Μάγιο.
-
-Θα έχει γεύμα, πολύ αλκοόλ
-και… τακούνια δεν ενδείκνυνται! </p>
+                    <p>Παντρευτήκαμε!!!</p>
+                    <p>Και θέλουμε να το γιορτάσουμε με όλα τα αγαπημένα μας πρόσωπα, σαν μία μεγάλη παρέα.</p>
+                    <p>Να αποχαιρετήσουμε το καλοκαίρι με ένα πάρτι στην Αφήσσο Πηλίου, σε ένα μέρος όπου έχουμε περάσει αξέχαστες στιγμές, με καλή παρέα, φαγητό και θέα το ηλιοβασίλεμα και τη θάλασσα.</p>
+                    <p>Σε περιμένουμε στο πάρτι που θα γίνει στον κήπο του ξενοδοχείου Καλιφτέρι, πάνω από το beach bar Μάγιο.</p>
+                    <p>Θα έχει γεύμα, πολύ αλκοόλ και… τακούνια δεν ενδείκνυνται!</p>
                 </div>
             </div>
             
@@ -335,7 +395,7 @@
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d771.1859627958086!2d23.158707502282944!3d39.275735916182015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a717e0f548a41b%3A0x21b4a3a417a54213!2zzqDOsc-BzrHOu86vzrEgzprOsc67zrvOuc-Gz4TOrc-Bzrc!5e1!3m2!1sen!2sgr!4v1750516820406!5m2!1sen!2sgr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <br>
-                    <p><em><a href="https://maps.app.goo.gl/ZZngh3McHLe2PwRp9" target="_blank" style="color: #4f46e5; text-decoration: none;">Οδηγίες στο Google Maps</a></em></p>
+                    <p><em><a href="https://maps.app.goo.gl/ZZngh3McHLe2PwRp9" target="_blank" class="link-style">Οδηγίες στο Google Maps</a></em></p>
                 </div>
             </div>
             
@@ -353,7 +413,7 @@
                         <iframe 
                             src="https://docs.google.com/forms/d/e/1FAIpQLSfOzvn1QKgYBqGSMuvzGkUMlR5EVWL5g3pZ-mC-koTMTwn2Qw/viewform?usp=sharing&ouid=106889908821891604879" 
                             width="100%" 
-                            height="600" 
+                            height="500" 
                             frameborder="0" 
                             marginheight="0" 
                             marginwidth="0"
@@ -361,7 +421,7 @@
                             Φόρτωση φόρμας επιβεβαίωσης...
                         </iframe>
                     </div>
-                    <p><em>Πρόβλημα με τη φόρμα; <a href="https://docs.google.com/forms/d/e/1FAIpQLSfOzvn1QKgYBqGSMuvzGkUMlR5EVWL5g3pZ-mC-koTMTwn2Qw/viewform?usp=dialog" target="_blank" style="color: #4f46e5; text-decoration: none;">Ανοίξτε σε νέα καρτέλα →</a></em></p>
+                    <p><em>Πρόβλημα με τη φόρμα; <a href="https://docs.google.com/forms/d/e/1FAIpQLSfOzvn1QKgYBqGSMuvzGkUMlR5EVWL5g3pZ-mC-koTMTwn2Qw/viewform?usp=dialog" target="_blank" class="link-style">Ανοίξτε σε νέα καρτέλα →</a></em></p>
                 </div>
             </div>
         </div>
